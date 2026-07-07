@@ -37,7 +37,7 @@ class RepositoryScanner:
        return None
     
     def detect_dockerfile(self,app_info:ApplicationInfo):
-       app_path=app_info.application_path
+       app_path=app_info.absolute_path
        dockerfile=app_path/"Dockerfile"
        app_info.has_dockerfile=dockerfile.exists()
 
@@ -47,7 +47,9 @@ class RepositoryScanner:
           if(manifest is not None):
              file,lang=manifest
              app_info=ApplicationInfo()
-             app_info.application_path=folder
+             app_info.absolute_path=folder
+             app_info.manifest_file=file
+             app_info.relative_path=folder.relative_to(self.repo_path)
              app_info.language=lang
              self.detect_dockerfile(app_info)
              info.apps_info.append(app_info)

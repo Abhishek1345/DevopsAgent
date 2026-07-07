@@ -2,13 +2,15 @@ from dataclasses import dataclass,field
 from pathlib import Path
 @dataclass
 class ApplicationInfo:
- application_path: Path=None
+ absolute_path: Path=None
+ relative_path: Path=None
+ manifest_file:Path=None
  language: str = "Unknown"
  framework: str= "Unknown"
  package_manager: str="Unknown"
  databse: str="Unknown"
  has_dockerfile: bool=False
- 
+
 
 @dataclass
 class ProjectInfo:
