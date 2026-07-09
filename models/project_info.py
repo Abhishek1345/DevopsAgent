@@ -8,8 +8,17 @@ class ApplicationInfo:
  language: str = "Unknown"
  framework: str= "Unknown"
  package_manager: str="Unknown"
- databse: str="Unknown"
+ database: str="Unknown"
  has_dockerfile: bool=False
+ port:int=None
+
+ @property
+ def databse(self):
+  return self.database
+
+ @databse.setter
+ def databse(self,value):
+  self.database=value
 
 
 @dataclass

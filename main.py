@@ -1,6 +1,6 @@
 from scanner.scanner import RepositoryScanner
 
-scanner = RepositoryScanner("../interview_app")
+scanner = RepositoryScanner("../nit_jsr_website")
 
 info=scanner.scan()
 print(info.project_name)
@@ -13,5 +13,6 @@ for app in info.apps_info:
     print("\t language=",app.language)
     print("\t framwork=",app.framework)
     print("\t package_manager=",app.package_manager)
-    print("\t databse",app.databse)
+    print("\t database=",app.database)
+    print("\t port=",app.port)
     print("\t has dockerfile:",app.has_dockerfile)
