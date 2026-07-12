@@ -25,7 +25,8 @@ def compose_agent(state:State)->State:
         response=llm.invoke([SystemMessage(content=system_prompt),HumanMessage(content=json.dumps(services))])
         composefile=response.content[0]['text']
         state['generated_files'].append({"file":project_info.project_path/"compose.yaml","content":composefile})
-        return state
+        
+    return state
         
 
         

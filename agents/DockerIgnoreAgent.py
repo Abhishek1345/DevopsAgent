@@ -21,7 +21,8 @@ def docker_ignore_agent(state:State)->State:
         response=llm.invoke([SystemMessage(content=system_prompt),HumanMessage(content=json.dumps(user_msg))])
         dockerignore=response.content[0]['text']
         state['generated_files'].append({"file":app_info.absolute_path/".dockerignore","content":dockerignore})
-        return state
+       
+    return state
     
 
         
