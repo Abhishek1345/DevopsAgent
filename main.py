@@ -1,6 +1,9 @@
 from scanner.scanner import RepositoryScanner
+from dotenv import load_dotenv
+load_dotenv()
+from graph.Graph import ready_graph
 
-scanner = RepositoryScanner("../nit_jsr_website")
+scanner = RepositoryScanner("../blog-website")
 
 info=scanner.scan()
 print(info.project_name)
@@ -16,3 +19,8 @@ for app in info.apps_info:
     print("\t database=",app.database)
     print("\t port=",app.port)
     print("\t has dockerfile:",app.has_dockerfile)
+
+
+ready_graph.invoke({"project_info":info,"application_index":0,"generated_files":[]})
+
+
