@@ -1,0 +1,18 @@
+[tool.setuptools]
+py-modules = ["cli", "main"]
+packages = ["llm", "graph", "agents", "models", "scanner"]
+
+[project]
+name = "devopsagent"
+version = "0.1.0"
+dependencies=[
+"langchain_core",
+"langchain_google_genai",
+"langgraph",
+"python-dotenv",
+"typer"
+]
+
+
+[project.scripts]
+devopsagent="cli:app"
