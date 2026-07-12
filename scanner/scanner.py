@@ -311,7 +311,7 @@ class RepositoryScanner:
 
 
     def __init__(self, repo_path):
-        self.repo_path = Path(repo_path)
+        self.repo_path =repo_path
     def validate(self):
      if not self.repo_path.exists():
         raise Exception("Repository does not exist")
