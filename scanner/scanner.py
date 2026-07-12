@@ -368,6 +368,7 @@ class RepositoryScanner:
         self.validate()
         info=ProjectInfo()
         info.project_name=self.repo_path.name
+        info.project_path=self.repo_path
         self.detect_compose(info)
         self.detect_github_workflow(info)
         self.detect_Applications(info)
