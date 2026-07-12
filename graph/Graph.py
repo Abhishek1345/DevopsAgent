@@ -4,6 +4,7 @@ from graph.writer import write
 from agents.DockerAgent import docker_agent
 from agents.DockerIgnoreAgent import docker_ignore_agent
 from agents.ComposeAgent import compose_agent
+from agents.WorkflowAgent import workflow_agent
 def docker_complete(state:State)->State:
     if state["application_index"]>=len(state["project_info"].apps_info):
         return "continue"
@@ -14,7 +15,7 @@ graph.add_node("docker_agent",docker_agent)
 graph.add_node("docker_ignore_agent",docker_ignore_agent)
 graph.add_node("compose_agent",compose_agent)
 graph.add_node("writer",write)
-
+graph.add_node("workflow_agent",workflow_agent)
 graph.add_edge(START,"docker_agent")
 graph.add_edge("docker_agent","docker_ignore_agent")
 graph.add_conditional_edges(
@@ -25,6 +26,7 @@ graph.add_conditional_edges(
     "continue":"compose_agent"
     }
 )
-graph.add_edge("compose_agent","writer")
+graph.add_edge("compose_agent","workflow_agent")
+graph.add_edge("workflow_agent","writer")
 graph.add_edge("writer",END)
 ready_graph=graph.compile()
