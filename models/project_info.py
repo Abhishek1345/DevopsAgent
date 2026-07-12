@@ -24,6 +24,7 @@ class ApplicationInfo:
 @dataclass
 class ProjectInfo:
     project_name: str = ""
+    project_path:Path
     apps_info:list[ApplicationInfo]=field(default_factory=list)
     has_compose: bool = False
     has_github_workflow: bool = False
