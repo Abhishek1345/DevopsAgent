@@ -1,7 +1,7 @@
 import typer
 from pathlib import Path
 
-from main import run_agent
+
 
 app = typer.Typer()
 
@@ -12,9 +12,10 @@ def version():
     
 @app.command()
 def init():
-
+    print("initialising AI agents...")
+    from main import run_agent
     repo = Path.cwd()
-
+    print("scanning repository...")
     run_agent(repo)
 
 if __name__ == "__main__":
